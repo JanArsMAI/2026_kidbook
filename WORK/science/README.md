@@ -62,7 +62,69 @@
 
 ### Схема онтологии
 
-![Онтология раздела](ontology.jpg)
+```mermaid
+graph TD
+    %% === Узлы (Понятия) ===
+    
+    %% Фундамент (Объекты изучения)
+    Nature["Природа"]
+    Patterns["Закономерности в природе"]
+    Organism["Организм"]
+
+    %% Научная иерархия (Дисциплины)
+    Science["Наука"]
+    NaturalSci["Естественные науки"]
+    ExpSci["Экспериментальная наука"]
+    
+    PhysicalSci["Физическая наука"]
+    Physics["Физика"]
+    Chemistry["Химия"]
+    EarthSci["Науки о Земле"]
+    SpaceSci["Космические науки"]
+    
+    EnvSci["Науки об окружающей среде"]
+    LifeSci["Науки о жизни"]
+    Biology["Биология"]
+
+    %% Методология
+    SciMethod["Научный метод"]
+    Experiment["Эксперимент"]
+
+    %% Деятельность
+    Research["Исследование"]
+    ResearchWork["Исследовательская работа"]
+
+    %% === Иерархические связи (Дерево наук) ===
+    NaturalSci -- "является разделом" --> Science
+    ExpSci -- "является видом" --> Science
+    
+    PhysicalSci -- "является ветвью" --> NaturalSci
+    Physics -- "относится к" --> PhysicalSci
+    Chemistry -- "относится к" --> PhysicalSci
+    EarthSci -- "относится к" --> PhysicalSci
+    SpaceSci -- "относится к" --> PhysicalSci
+    
+    LifeSci -- "является ветвью" --> NaturalSci
+    Biology -- "относится к" --> LifeSci
+    
+    EnvSci -- "относится к" --> EarthSci
+    EnvSci -- "относится к" --> LifeSci
+
+    %% === Горизонтальные связи (Смысловые) ===
+    
+    %% Что изучают
+    NaturalSci -- "изучают" --> Nature
+    Nature -- "содержит" --> Patterns
+    Physics -- "описывает" --> Patterns
+    LifeSci -- "исследуют" --> Organism
+
+    %% Как изучают (Методология и Деятельность)
+    Science -- "осуществляется через" --> Research
+    Research -- "реализуется как" --> ResearchWork
+    ResearchWork -- "применяет" --> SciMethod
+    SciMethod -- "включает" --> Experiment
+    ExpSci -- "основана на" --> Experiment
+```
 
 ---
 
